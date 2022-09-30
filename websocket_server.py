@@ -22,7 +22,7 @@ def hello():
     return render_template('index.html')
 
 
-HTTP_SERVER_PORT = 8000
+HTTP_SERVER_PORT = 8501
 
 class Transcoder(object):
     """
@@ -149,6 +149,6 @@ if __name__ == "__main__":
     from gevent import pywsgi
     from geventwebsocket.handler import WebSocketHandler
 
-    server = pywsgi.WSGIServer(('', HTTP_SERVER_PORT), app, handler_class=WebSocketHandler)
-    print("Server listening on: http://localhost:" + str(HTTP_SERVER_PORT))
+    server = pywsgi.WSGIServer(('54.162.58.13', HTTP_SERVER_PORT), app, handler_class=WebSocketHandler)
+    print("Server listening on: http://54.162.58.13:" + str(HTTP_SERVER_PORT))
     server.serve_forever()
