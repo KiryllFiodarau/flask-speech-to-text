@@ -8,10 +8,11 @@ from google.cloud import speech
 from google.cloud.speech_v1 import types
 import os
 import base64
+import google.auth
 import logging
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./credentials.json"
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./clientLibraryConfig-aws-close-caption.json"
+os.environ["GOOGLE_CLOUD_PROJECT"]="test project"
 
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
