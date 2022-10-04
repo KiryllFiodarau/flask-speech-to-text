@@ -12,7 +12,7 @@
       counter: 0,
       bufferSize: 4096,
       main: function() {
-        this.socket = new WebSocket("ws://127.0.0.1:8000/stream");
+        this.socket = new WebSocket("ws://54.162.58.13/stream");
         this.socket.addEventListener("open", this.onSocketOpen.bind(this));
         this.socket.addEventListener("message", this.onSocketMessage.bind(this));
       },
