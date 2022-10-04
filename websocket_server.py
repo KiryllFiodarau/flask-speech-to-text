@@ -26,7 +26,7 @@ def hello():
     return render_template('index.html')
 
 
-HTTP_SERVER_PORT = 8501
+HTTP_SERVER_PORT = 8000
 
 class Transcoder(object):
     """
