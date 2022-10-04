@@ -9,8 +9,10 @@ from google.cloud.speech_v1 import types
 import os
 import logging
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./configoutput.json"
-os.environ["GOOGLE_CLOUD_PROJECT"]="complete-tube-364507"
+
+os.environ["GOOGLE_CLOUD_PROJECT"] ='complete-tube-364507' #The GCP project ID
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='configoutput.json' #configuration file
+
 
 
 app = Flask(__name__, template_folder='./templates')
@@ -60,7 +62,9 @@ class Transcoder(object):
         """
         #You can add speech contexts for better recognition
         cap_speech_context = types.SpeechContext(phrases=["Add your phrases here"])
+        print("speech1")
         client = speech.SpeechClient()
+        print("speech12")
         config = types.RecognitionConfig(
             encoding=self.encoding,
             sample_rate_hertz=self.rate,
