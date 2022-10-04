@@ -11,10 +11,10 @@ import logging
 
 
 os.environ["GOOGLE_CLOUD_PROJECT"] ='complete-tube-364507' #The GCP project ID
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='configoutput.json' #configuration file
-print("client-start")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./configoutput.json' #configuration file
+print("client-start-new")
 client = speech.SpeechClient()
-print("client")
+print("client-end-new")
 
 
 app = Flask(__name__, template_folder='./templates')
@@ -114,6 +114,7 @@ transcoder = None
 
 @sockets.route('/stream')
 def start_streaming(ws):
+    print("data_test")
     app.logger.info("Connection accepted")
     while not ws.closed:
         message = ws.receive()
