@@ -18,8 +18,6 @@ os.environ["GOOGLE_CLOUD_PROJECT"]="test project"
 credentials, project = google.auth.default()
 print(project)
 print("gdfffffffff")
-for c in credentials:
-    print(c)
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
 
