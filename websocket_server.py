@@ -7,17 +7,12 @@ from six.moves import queue
 from google.cloud import speech
 from google.cloud.speech_v1 import types
 import os
-import base64
-import google.auth
 import logging
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./clientLibraryConfig-aws-close-caption.json"
-os.environ["GOOGLE_CLOUD_PROJECT"]="test project"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./configoutput.json"
+os.environ["GOOGLE_CLOUD_PROJECT"]="complete-tube-364507"
 
 
-credentials, project = google.auth.default()
-print(project)
-print("gdfffffffff")
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
 
@@ -27,7 +22,7 @@ def hello():
     return render_template('index.html')
 
 
-HTTP_SERVER_PORT = 8000
+HTTP_SERVER_PORT = 8501
 
 class Transcoder(object):
     """
@@ -65,7 +60,7 @@ class Transcoder(object):
         """
         #You can add speech contexts for better recognition
         cap_speech_context = types.SpeechContext(phrases=["Add your phrases here"])
-        client = speech.SpeechClient(credentials=credentials)
+        client = speech.SpeechClient()
         config = types.RecognitionConfig(
             encoding=self.encoding,
             sample_rate_hertz=self.rate,
