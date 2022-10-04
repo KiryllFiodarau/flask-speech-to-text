@@ -14,6 +14,12 @@ import logging
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./clientLibraryConfig-aws-close-caption.json"
 os.environ["GOOGLE_CLOUD_PROJECT"]="test project"
 
+
+credentials, project = google.auth.default()
+print(project)
+print("gdfffffffff")
+for c in credentials:
+    print(c)
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
 
@@ -61,7 +67,7 @@ class Transcoder(object):
         """
         #You can add speech contexts for better recognition
         cap_speech_context = types.SpeechContext(phrases=["Add your phrases here"])
-        client = speech.SpeechClient()
+        client = speech.SpeechClient(credentials=credentials)
         config = types.RecognitionConfig(
             encoding=self.encoding,
             sample_rate_hertz=self.rate,
@@ -149,10 +155,6 @@ if __name__ == "__main__":
     app.logger.setLevel(logging.DEBUG)
     from gevent import pywsgi
     from geventwebsocket.handler import WebSocketHandler
-    import google.auth
-
-    credentials, project = google.auth.default()
-    print(credentials, project)
 
     server = pywsgi.WSGIServer(('', HTTP_SERVER_PORT), app, handler_class=WebSocketHandler)
     print("Server listening on: http://localhost:" + str(HTTP_SERVER_PORT))
