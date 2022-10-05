@@ -10,11 +10,9 @@ import os
 import logging
 
 
-os.environ["GOOGLE_CLOUD_PROJECT"] ='complete-tube-364507' #The GCP project ID
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./configoutput.json' #configuration file
-print("client-start-new")
-client = speech.SpeechClient()
-print("client-end-new")
+os.environ["GOOGLE_CLOUD_PROJECT"] ='gcp-subtitles' #The GCP project ID
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration file
+
 
 
 app = Flask(__name__, template_folder='./templates')
