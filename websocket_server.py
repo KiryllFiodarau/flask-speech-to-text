@@ -13,7 +13,9 @@ import logging
 os.environ["GOOGLE_CLOUD_PROJECT"] ='gcp-subtitles' #The GCP project ID
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration file
 
-
+print("speech1")
+client = speech.SpeechClient()
+print("speech12")
 
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
