@@ -12,9 +12,14 @@ import logging
 
 os.environ["GOOGLE_CLOUD_PROJECT"] ='gcp-subtitles' #The GCP project ID
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration file
+from google.auth import aws
 
+with open('gcp_config.json') as f:
+    json_config_info = json.loads(f)
+print(json_config_info)
+credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
-client = speech.SpeechClient()
+client = speech.SpeechClient(credentials=credentials)
 print("Finish init")
 
 app = Flask(__name__, template_folder='./templates')
