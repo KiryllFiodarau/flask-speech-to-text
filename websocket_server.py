@@ -15,7 +15,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration
 from google.auth import aws
 
 with open('gcp_config.json') as f:
-    json_config_info = json.loads(f)
+    json_config_info = json.load(f)
 print(json_config_info)
 credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
