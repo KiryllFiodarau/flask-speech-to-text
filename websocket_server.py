@@ -31,6 +31,7 @@ credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
 client = speech.SpeechClient(credentials=credentials)
 print("Finish init")
+print("----------------------------------------------------")
 
 app = Flask(__name__, template_folder='./templates')
 sockets = Sockets(app)
