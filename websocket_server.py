@@ -10,7 +10,7 @@ import os
 import logging
 
 
-os.environ["GOOGLE_CLOUD_PROJECT"] ='gcp-subtitles' #The GCP project ID
+os.environ["GOOGLE_CLOUD_PROJECT"] ='gcp-subtitles2' #The GCP project ID
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration file
 from google.auth import aws
 
