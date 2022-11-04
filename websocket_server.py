@@ -29,7 +29,7 @@ json_config_info = {
 }
 credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
-client = speech.SpeechClient(credentials=credentials)
+client = speech.SpeechClient()
 print("Finish init 0")
 
 gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
