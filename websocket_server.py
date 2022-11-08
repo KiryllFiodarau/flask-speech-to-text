@@ -8,6 +8,7 @@ from google.cloud import speech
 from google.cloud.speech_v1 import types
 import os
 import logging
+import traceback
 
 
 os.environ["GOOGLE_CLOUD_PROJECT"] ='' #The GCP project ID
@@ -32,7 +33,9 @@ print("Start init")
 try:
     client = speech.SpeechClient(credentials=credentials)
 except Exception as ex:
+    print("exception")
     print(ex.args)
+    print(traceback.format_exc())
 print("Finish init 0")
 
 gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
