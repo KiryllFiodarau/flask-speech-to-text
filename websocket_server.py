@@ -14,6 +14,10 @@ import traceback
 os.environ["GOOGLE_CLOUD_PROJECT"] ='' #The GCP project ID
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] ='./gcp_config.json' #configuration file
 from google.auth import aws
+import logging
+
+
+LOG = logging.getLogger(__name__)
 
 json_config_info = {
   "type": "external_account",
@@ -33,27 +37,28 @@ print("Start init")
 client = None
 try:
     client = speech.SpeechClient(credentials=credentials)
+
+    print("Finish init 0")
+
+    gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
+
+    audio = speech.RecognitionAudio(uri=gcs_uri)
+
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=16000,
+        language_code="en-US",
+    )
+
+    # Detects speech in the audio file
+    response = client.recognize(config=config, audio=audio)
+
+    for result in response.results:
+        print("Transcript: {}".format(result.alternatives[0].transcript))
 except Exception as ex:
     print("exception")
     print(ex.args)
     print(traceback.format_exc())
-print("Finish init 0")
-
-gcs_uri = "gs://cloud-samples-data/speech/brooklyn_bridge.raw"
-
-audio = speech.RecognitionAudio(uri=gcs_uri)
-
-config = speech.RecognitionConfig(
-    encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-    sample_rate_hertz=16000,
-    language_code="en-US",
-)
-
-# Detects speech in the audio file
-response = client.recognize(config=config, audio=audio)
-
-for result in response.results:
-    print("Transcript: {}".format(result.alternatives[0].transcript))
 print("Finish init")
 print("----------------------------------------------------")
 
