@@ -32,6 +32,7 @@ credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
 try:
     client = speech.SpeechClient(credentials=credentials)
+    raise Exception
 except Exception as ex:
     print("exception")
     print(ex.args)
