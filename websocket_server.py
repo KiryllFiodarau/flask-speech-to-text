@@ -32,7 +32,8 @@ json_config_info = {
   },
   "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/test-king@gcp-subtitles.iam.gserviceaccount.com:generateAccessToken"
 }
-credentials = aws.Credentials.from_info(json_config_info)
+
+credentials = aws.Credentials.from_info({})
 print("Start init")
 client = None
 try:
