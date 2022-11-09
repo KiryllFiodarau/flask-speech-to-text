@@ -30,7 +30,7 @@ json_config_info = {
     "url": "http://169.254.169.254/latest/meta-data/iam/security-credentials",
     "regional_cred_verification_url": "https://sts.{region}.amazonaws.com?Action=GetCallerIdentity&Version=2011-06-15"
   },
-  "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/test-king@gcp-subtitles.iam.gserviceaccount.com:generateAccessToken"
+  "service_account_impersonation_url": "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/aws-role@gcp-subtitles.iam.gserviceaccount.com:generateAccessToken"
 }
 credentials = aws.Credentials.from_info(json_config_info)
 print("Start init")
